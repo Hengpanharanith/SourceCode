@@ -58,7 +58,7 @@ class Chimney {
 }
 
 class House {
-  String address;
+  final String address;
   List<Tree> trees = [];
   List<Window> windows = [];
   Door door;
@@ -92,14 +92,11 @@ void main() {
   Roof redRoof = Roof('Red');
   Chimney chimney = Chimney('Yes');
 
-  House myHouse = House('556, 6A Street', redRoof, chimney, frontDoor,
-      [pinkWindowLeft, pinkWindowRight]);
+  House myHouse = House('556, 6A Street', redRoof, chimney, frontDoor, []);
 
   myHouse.addTree(mangoTree);
-  myHouse.addTree(orangeTree);
 
-  Window blueWindowBack = Window('Back', 1, 'Blue');
-  myHouse.addWindow(blueWindowBack);
+  myHouse.addWindow(pinkWindowLeft);
 
   print(myHouse);
 }
