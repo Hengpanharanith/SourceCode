@@ -3,11 +3,11 @@ class Tree {
   double height;
 
   Tree(this.type, this.height);
-}
 
-class Color {
-  String color;
-  Color(this.color);
+  @override
+  String toString() {
+    return 'Tree: $type, Height: $height';
+  }
 }
 
 class Window {
@@ -19,7 +19,7 @@ class Window {
 
   @override
   String toString() {
-    return 'Window: $side, Floor: $floor, Color: $color';
+    return '\nWindow: $side, Floor: $floor, Color: $color\n';
   }
 }
 
@@ -31,18 +31,19 @@ class Door {
 
   @override
   String toString() {
-    return 'Door: $position, Color: $color';
+    return '\nDoor: $position, Color: $color\n';
   }
 }
 
 class Roof {
   String type;
+  String color;
 
-  Roof(this.type);
+  Roof(this.type, this.color);
 
   @override
   String toString() {
-    return 'Roof: $type';
+    return 'Roof: $type, Color: $color\n';
   }
 }
 
@@ -53,19 +54,19 @@ class Chimney {
 
   @override
   String toString() {
-    return 'Chimney: $chimney';
+    return 'Chimney: $chimney\n';
   }
 }
 
 class House {
-  final String address;
+  final String _address;
   List<Tree> trees = [];
   List<Window> windows = [];
   Door door;
   Roof roof;
   Chimney chimney;
 
-  House(this.address, this.roof, this.chimney, this.door, this.windows);
+  House(this._address, this.roof, this.chimney, this.door, this.windows);
 
   void addTree(Tree newTree) {
     this.trees.add(newTree);
@@ -77,7 +78,7 @@ class House {
 
   @override
   String toString() {
-    return 'House at $address with $roof, $door, $chimney, Windows: $windows, Trees: ${trees.length}';
+    return 'House at $_address with $roof, $door, $chimney, Windows: $windows, Trees: $trees';
   }
 }
 
@@ -87,16 +88,18 @@ void main() {
 
   Window pinkWindowLeft = Window('Left', 2, 'Pink');
   Window pinkWindowRight = Window('Right', 2, 'Pink');
-
+  
   Door frontDoor = Door('center', 'pink');
-  Roof redRoof = Roof('Red');
+  Roof roofofhouse = Roof('Triangle', 'Red');
   Chimney chimney = Chimney('Yes');
 
-  House myHouse = House('556, 6A Street', redRoof, chimney, frontDoor, []);
+  // Pass an empty list for windows initially
+  House myHouse = House('556, 6A Street', roofofhouse, chimney, frontDoor, []);
 
   myHouse.addTree(mangoTree);
-
+  myHouse.addTree(orangeTree);
   myHouse.addWindow(pinkWindowLeft);
+  myHouse.addWindow(pinkWindowRight);
 
   print(myHouse);
 }

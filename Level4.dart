@@ -8,6 +8,7 @@ class Distances {
 
   double? get meter {
     return meters;
+    
   }
 
   double? get km {
@@ -31,8 +32,8 @@ class Distances {
   Distances.cms(double? cms) {
     if (cms != null) {
       this.cms = cms;
-      this.meters = cms * 100;
-      this.kms = cms * 10000;
+      this.meters = cms / 100;
+      this.kms = cms / 10000;
     }
   }
   @override
@@ -46,7 +47,8 @@ class Distances {
 }
 
 void main() {
-  Distances d1 = Distances.kms(10);
-  Distances d2 = Distances.meters(20);
-  print(d1 + d2);
+  Distances d1 = Distances.cms(1000);
+  Distances d2 = Distances.kms(1);
+  Distances d3 = Distances.meters(10);
+  print(d1 + d2 + d3);
 }
